@@ -1,29 +1,30 @@
 import { createFileRoute } from "@tanstack/react-router";
+import DigitalBusinessCard from "@/components/DigitalBusinessCard";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "João Silva — Construtor Civil" },
+      {
+        name: "description",
+        content:
+          "Cartão de visita digital de João Silva, construtor civil. Entre em contato via WhatsApp, telefone ou e-mail.",
+      },
+      { property: "og:title", content: "João Silva — Construtor Civil" },
+      {
+        property: "og:description",
+        content:
+          "Não sou apenas pedreiro, sou construtor de sonhos. Entre em contato!",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+  return <DigitalBusinessCard />;
 }
