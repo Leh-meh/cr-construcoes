@@ -5,42 +5,49 @@ import {
   Instagram,
   Facebook,
   MapPin,
-  HardHat,
-  ChevronRight,
+  Hammer,
+  Paintbrush,
+  House,
+  Building2,
 } from "lucide-react";
 
-/* ============================================
-   DADOS DO PROFISSIONAL — EDITE AQUI
-   ============================================ */
 const PROFISSIONAL = {
-  // Informações básicas
-  nome: "João Silva",
-  cargo: "Construtor Civil",
-  fraseDestaque: "Não sou apenas pedreiro, sou construtor de sonhos.",
-  descricao:
-    "Mais de 15 anos transformando projetos em realidade. Especialista em construção residencial, reformas e acabamentos de alta qualidade.",
+  nome: "CR Construções",
+  cargo: "Construtor de Sonhos",
 
-  // Contato — substitua pelos seus dados
-  telefone: "5511999999999", // formato: 5511...
-  email: "contato@joaosilva.com",
-  whatsappMensagem:
-    "Olá! Gostaria de solicitar um orçamento para construção.",
+  fraseDestaque: "Construindo confiança em cada projeto.",
 
-  // Redes sociais — deixe vazio "" para ocultar o botão
-  instagram: "https://instagram.com/joaosilva",
-  facebook: "https://facebook.com/joaosilva",
+  servicos: [
+    {
+      titulo: "Construção Residencial",
+      icon: House,
+    },
+    {
+      titulo: "Reformas em Geral",
+      icon: Hammer,
+    },
+    {
+      titulo: "Acabamentos",
+      icon: Paintbrush,
+    },
+    {
+      titulo: "Construção Comercial",
+      icon: Building2,
+    },
+  ],
 
-  // Localização
-  regiao: "Atende em São Paulo e Grande ABC",
-  enderecoMaps: "https://maps.google.com",
+  telefone: "5511996939636",
+  email: "contato@crconstrucoes.com",
+  whatsappMensagem: "Olá! Gostaria de solicitar um orçamento com a CR Construções.",
+
+  instagram: "https://www.instagram.com/_cr_construcoes/",
+  facebook: "https://facebook.com/crconstrucoes",
+
+  regiao: "São Paulo e região",
 };
 
-/* ============================================
-   LINKS DE AÇÃO
-   ============================================ */
 function getWhatsAppLink(telefone: string, mensagem: string): string {
-  const encodedMsg = encodeURIComponent(mensagem);
-  return `https://wa.me/${telefone}?text=${encodedMsg}`;
+  return `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
 }
 
 function getPhoneLink(telefone: string): string {
@@ -51,169 +58,136 @@ function getEmailLink(email: string): string {
   return `mailto:${email}`;
 }
 
-/* ============================================
-   COMPONENTES AUXILIARES
-   ============================================ */
-interface ActionButtonProps {
-  href: string;
-  icon: React.ReactNode;
-  label: string;
-  variant?: "primary" | "secondary" | "outline" | "social";
-}
-
-function ActionButton({
-  href,
-  icon,
-  label,
-  variant = "primary",
-}: ActionButtonProps) {
-  const baseClasses =
-    "flex items-center gap-3 w-full px-5 py-4 rounded-2xl font-semibold text-sm transition-all duration-200 active:scale-[0.98]";
-
-  const variantClasses = {
-    primary:
-      "bg-gradient-to-r from-[#1e3a8a] to-[#3b82f6] text-white shadow-lg shadow-blue-900/20 hover:shadow-xl hover:shadow-blue-900/30 hover:-translate-y-0.5",
-    secondary:
-      "bg-gradient-to-r from-[#059669] to-[#10b981] text-white shadow-lg shadow-emerald-900/20 hover:shadow-xl hover:shadow-emerald-900/30 hover:-translate-y-0.5",
-    outline:
-      "bg-white border-2 border-[#e2e8f0] text-[#1e293b] hover:border-[#3b82f6] hover:text-[#1e3a8a] hover:bg-[#eff6ff]",
-    social:
-      "bg-white border border-[#e2e8f0] text-[#475569] hover:border-[#3b82f6] hover:text-[#1e3a8a] hover:bg-[#eff6ff]",
-  };
-
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`${baseClasses} ${variantClasses[variant]}`}
-    >
-      <span className="shrink-0">{icon}</span>
-      <span className="flex-1">{label}</span>
-      <ChevronRight className="shrink-0 w-4 h-4 opacity-50" />
-    </a>
-  );
-}
-
-/* ============================================
-   COMPONENTE PRINCIPAL
-   ============================================ */
 export default function DigitalBusinessCard() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#f0f5ff] via-[#f8fafc] to-[#f0f5ff] flex items-center justify-center p-4 sm:p-6">
-      <article className="w-full max-w-[420px] bg-white rounded-[2rem] shadow-2xl shadow-blue-900/10 overflow-hidden border border-[#e2e8f0]/60">
-        {/* Faixa decorativa superior */}
-        <div className="h-2 bg-gradient-to-r from-[#1e3a8a] via-[#3b82f6] to-[#60a5fa]" />
+    <main className="min-h-screen bg-gradient-to-b from-[#020617] via-[#071120] to-[#0b1220] flex items-center justify-center px-4 py-4 text-white">
+      <article className="relative w-full max-w-[350px] h-[650px] overflow-hidden rounded-[1.7rem] border border-white/10 bg-[#071326] shadow-2xl shadow-blue-950/60">
+        <div className="h-[3px] w-full bg-gradient-to-r from-blue-500 via-cyan-300 to-blue-500" />
 
-        {/* Conteúdo */}
-        <div className="px-7 pt-8 pb-8 sm:px-9">
-          {/* Logo / Ícone */}
-          <div className="flex justify-center mb-6">
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#1e3a8a] to-[#3b82f6] flex items-center justify-center shadow-lg shadow-blue-900/20">
-              <HardHat className="w-10 h-10 text-white" strokeWidth={1.5} />
-            </div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#1d4ed8_0%,transparent_34%)] opacity-35" />
+        <div className="absolute -top-20 left-1/2 h-36 w-36 -translate-x-1/2 rounded-full bg-blue-500/20 blur-3xl" />
+
+        <div className="relative h-13 border-b border-white/10 bg-[linear-gradient(rgba(255,255,255,.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] bg-[size:58px_44px]">
+          <div className="absolute right-4 top-3 rounded-full border border-blue-300/20 bg-blue-400/10 px-3 py-1 text-[9px] font-bold uppercase tracking-wider text-blue-200">
+            Obras & Reformas
+          </div>
+        </div>
+
+        <section className="relative -mt-9 px-5 pb-5">
+          <div className="flex justify-center">
+            <img
+              src="/logo.png"
+              alt="CR Construções"
+              className="w-28 h-auto mx-auto object-contain drop-shadow-[0_0_22px_rgba(59,130,246,0.35)]"
+            />
           </div>
 
-          {/* Nome e Cargo */}
-          <div className="text-center mb-5">
-            <h1 className="text-[1.6rem] font-bold text-[#0f172a] tracking-tight leading-tight">
-              {PROFISSIONAL.nome}
+          <div className="mt-3 text-center">
+            <h1 className="text-[1.55rem] font-black tracking-tight leading-tight">
+              CR <span className="text-blue-300">Construções</span>
             </h1>
-            <p className="text-[#3b82f6] font-semibold text-sm mt-1 uppercase tracking-wide">
+
+            <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.2em] text-cyan-300">
               {PROFISSIONAL.cargo}
             </p>
-          </div>
 
-          {/* Frase de destaque */}
-          <div className="relative mb-6">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#3b82f6] to-[#60a5fa] rounded-full" />
-            <p className="pl-4 text-[#1e3a8a] font-medium text-[0.95rem] leading-relaxed italic">
-              "{PROFISSIONAL.fraseDestaque}"
-            </p>
-          </div>
-
-          {/* Descrição profissional */}
-          <p className="text-[#475569] text-sm leading-relaxed text-center mb-8">
-            {PROFISSIONAL.descricao}
-          </p>
-
-          {/* Botões de contato principais */}
-          <div className="space-y-3 mb-6">
-            <ActionButton
-              href={getWhatsAppLink(
-                PROFISSIONAL.telefone,
-                PROFISSIONAL.whatsappMensagem,
-              )}
-              icon={<MessageCircle className="w-5 h-5" />}
-              label="Conversar no WhatsApp"
-              variant="secondary"
-            />
-            <ActionButton
-              href={getPhoneLink(PROFISSIONAL.telefone)}
-              icon={<Phone className="w-5 h-5" />}
-              label="Ligar Agora"
-              variant="primary"
-            />
-            <ActionButton
-              href={getEmailLink(PROFISSIONAL.email)}
-              icon={<Mail className="w-5 h-5" />}
-              label="Enviar E-mail"
-              variant="outline"
-            />
-          </div>
-
-          {/* Redes sociais */}
-          {(PROFISSIONAL.instagram || PROFISSIONAL.facebook) && (
-            <div className="grid grid-cols-2 gap-3 mb-6">
-              {PROFISSIONAL.instagram && (
-                <a
-                  href={PROFISSIONAL.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl bg-gradient-to-br from-[#f093fb] to-[#f5576c] text-white font-semibold text-sm transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:scale-[0.98]"
-                >
-                  <Instagram className="w-5 h-5" />
-                  Instagram
-                </a>
-              )}
-              {PROFISSIONAL.facebook && (
-                <a
-                  href={PROFISSIONAL.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl bg-gradient-to-br from-[#1877f2] to-[#166fe5] text-white font-semibold text-sm transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:scale-[0.98]"
-                >
-                  <Facebook className="w-5 h-5" />
-                  Facebook
-                </a>
-              )}
+            <div className="mt-2 flex items-center justify-center gap-1.5 text-[12px] text-slate-300">
+              <MapPin className="h-4 w-4 text-blue-300" />
+              <span>{PROFISSIONAL.regiao}</span>
             </div>
-          )}
+          </div>
 
-          {/* Região de atendimento */}
-          <a
-            href={PROFISSIONAL.enderecoMaps}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 py-4 px-5 rounded-2xl bg-[#f1f5f9] text-[#475569] text-sm font-medium transition-all duration-200 hover:bg-[#e2e8f0] hover:text-[#1e293b] mb-6"
-          >
-            <MapPin className="w-4 h-4 text-[#3b82f6]" />
-            {PROFISSIONAL.regiao}
-          </a>
-
-          {/* Divisor */}
-          <div className="border-t border-[#e2e8f0] mb-5" />
-
-          {/* Rodapé */}
-          <footer className="text-center">
-            <p className="text-[#94a3b8] text-xs leading-relaxed">
-              Profissional qualificado e comprometido
-              <br />
-              com a excelência em cada projeto.
+          <div className="mt-4 rounded-2xl border border-white/10 bg-white/[0.045] px-4 py-2 backdrop-blur">
+            <p className="text-center text-[15px] font-semibold leading-snug text-white">
+              {PROFISSIONAL.fraseDestaque}
             </p>
-          </footer>
-        </div>
+          </div>
+
+          {/* ESPECIALIDADES */}
+          <div className="mt-5">
+            <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">
+              Especialidades
+            </p>
+
+            <div className="grid grid-cols-2 gap-2">
+              {PROFISSIONAL.servicos.map((servico) => {
+                const Icon = servico.icon;
+
+                return (
+                  <div
+                    key={servico.titulo}
+                    className="
+            flex
+            flex-col
+            items-center
+            justify-center
+            rounded-xl
+            border
+            border-white/10
+            bg-white/[0.04]
+            py-3
+            transition-all
+            duration-300
+            hover:-translate-y-1
+            hover:border-blue-400/30
+            hover:bg-blue-500/10
+          "
+                  >
+                    <Icon className="mb-2 h-5 w-5 text-cyan-300" />
+
+                    <span className="text-[11px] font-medium text-center leading-tight text-white">
+                      {servico.titulo}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="mt-4 space-y-2.5">
+            <a
+              href={getWhatsAppLink(PROFISSIONAL.telefone, PROFISSIONAL.whatsappMensagem)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/btn relative flex items-center justify-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-400 px-5 py-3 text-sm font-black text-[#020817] shadow-lg shadow-blue-500/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-blue-400/35 active:scale-[0.98]"
+            >
+              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/35 to-transparent transition-transform duration-700 group-hover/btn:translate-x-full" />
+              <MessageCircle className="relative h-5 w-5" />
+              <span className="relative">Solicitar orçamento</span>
+            </a>
+
+            <a
+              href={getPhoneLink(PROFISSIONAL.telefone)}
+              className="flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-[#102447] px-5 py-3 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/25 hover:bg-white/[0.1] active:scale-[0.98] "
+            >
+              <Phone className="h-4 w-4 text-blue-300" />
+              Ligar agora
+            </a>
+          </div>
+
+          <div className="mt-4 flex justify-center gap-3">
+            <a
+              href={PROFISSIONAL.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.06] text-slate-300 transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:border-blue-300/40 hover:text-cyan-300 active:scale-95"
+              aria-label="Instagram"
+            >
+              <Instagram className="h-4.5 w-4.5" />
+            </a>
+
+            <a
+              href={PROFISSIONAL.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.06] text-slate-300 transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:border-blue-300/40 hover:text-cyan-300 active:scale-95"
+              aria-label="Facebook"
+            >
+              <Facebook className="h-4.5 w-4.5" />
+            </a>
+          </div>
+        </section>
       </article>
-    </div>
+    </main>
   );
 }
